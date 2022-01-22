@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,13 +21,16 @@ public class CreateUserRequest {
     private static final String EMAIL_PATTERN = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*"
             + "@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
 
+    @NotEmpty
     @Schema(description = "User's name", example = "Juan Rodriguez")
     private String name;
 
+    @NotEmpty
     @Schema(description = "User's email", example = "juan@rodriguez.do")
     @Email(message = "Correo inválido", regexp = EMAIL_PATTERN)
     private String email;
 
+    @NotEmpty
     @Schema(description = "User's password", example = "0123456789$abcdefgAB")
     @Password
     private String password;
