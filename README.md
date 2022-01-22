@@ -22,7 +22,8 @@
 
 ## Operations:
 
-End-Point to create a new user
+### Create a new user
+
 `POST` request to `/api/v1/users`:
 
 ## Data:
