@@ -65,6 +65,9 @@ Example of a response
   "isactive": true
 }
 ```
+### Script to create Database
+
+`/src/main/resources/schema.json`
 
 ## Swagger UI
 
