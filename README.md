@@ -67,7 +67,7 @@ Example of a response
 ```
 ### Script to create Database
 
-`/src/main/resources/schema.json`
+[`/src/main/resources/schema.json`](https://github.com/fespinosa-dev/nisum-java-evaluation/blob/main/src/main/resources/schema.sql)
 
 ## Swagger UI
 
