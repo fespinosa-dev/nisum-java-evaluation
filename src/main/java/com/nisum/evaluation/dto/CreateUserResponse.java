@@ -1,5 +1,6 @@
 package com.nisum.evaluation.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.nisum.evaluation.validation.Password;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -43,10 +44,12 @@ public class CreateUserResponse {
     @Schema(description = "User's last modified date", example = "2021-12-14T23:47:46.164577Z")
     private Instant modified;
 
-    @Schema(name= "last_login", description = "User's last login", example = "2021-12-14T23:47:46.164577Z")
+    @Schema(description = "User's last login", example = "2021-12-14T23:47:46.164577Z")
+    @JsonProperty("last_login")
     private Instant lastLogin;
 
-    @Schema(name= "isactive", description = "User's active state", example = "true")
+    @Schema(description = "User's active state", example = "true")
+    @JsonProperty("isactive")
     @Builder.Default
     private boolean active = true;
 
