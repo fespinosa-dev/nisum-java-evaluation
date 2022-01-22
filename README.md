@@ -47,27 +47,22 @@ Example of a response
 
 ```json
 {
-  "userId": "2baa17a6-33d1-4abb-b833-2ee033d94f9d",
+  "userId": "4e2198cc-7854-4d6e-926b-2d3c07b1e966",
   "name": "Juan Rodriguez",
-  "email": "juan@rodriguez.com",
+  "email": "juan@rodriguez.do",
   "password": "0123456789$abcdefgAB",
   "phones": [
     {
       "number": "1234567",
       "citycode": "1",
       "countrycode": "57"
-    },
-    {
-      "number": "1234567",
-      "citycode": "1",
-      "countrycode": "57"
     }
   ],
-  "created": "2022-01-22T17:35:22.683298Z",
-  "modified": "2022-01-22T17:35:22.683298Z",
-  "lastLogin": "2022-01-22T17:35:22.683298Z",
-  "active": true,
-  "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJKdWFuIFJvZHJpZ3VleiIsImlhdCI6MTY0Mjg3MjkyMiwiZXhwIjoxNjQyOTU5MzIyfQ.u2EOBQCXKxrsJP_JoUbrGfju7Y2N7lkZZzUnw9WXi1gopKNizUhYioeD3sQjfAYh3cUW8riROB8jeQhGeCYA3w"
+  "created": "2022-01-22T20:42:10.483026Z",
+  "modified": "2022-01-22T20:42:10.483026Z",
+  "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJKdWFuIFJvZHJpZ3VleiIsImlhdCI6MTY0Mjg4NDEzMCwiZXhwIjoxNjQyOTcwNTMwfQ.ELZHmPcdnt...",
+  "last_login": "2022-01-22T20:42:10.483026Z",
+  "isactive": true
 }
 ```
 
