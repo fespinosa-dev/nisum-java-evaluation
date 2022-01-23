@@ -12,8 +12,6 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
-    CreateUserRequest userToUserDto(User user);
-
     @Mapping(target = "userId", ignore = true)
     @Mapping(target = "created", ignore = true)
     @Mapping(target = "modified", ignore = true)
