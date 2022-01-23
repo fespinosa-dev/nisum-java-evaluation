@@ -65,10 +65,15 @@ Example of a response
   "isactive": true
 }
 ```
-### Script to create Database
-
-[`/src/main/resources/schema.json`](https://github.com/fespinosa-dev/nisum-java-evaluation/blob/main/src/main/resources/schema.sql)
 
 ## Swagger UI
 
 Swagger UI: [http://localhost:8080/swagger-ui](http://localhost:8080/swagger-ui/index.html)
+
+### Script to create Database
+
+[`/src/main/resources/schema.json`](src/main/resources/schema.sql)
+
+## UML Diagram
+
+![Uml Diagram](diagram/diagram.png)
