@@ -1,5 +1,7 @@
 # nisum-java-evaluation
 
+![example workflow](https://github.com/fespinosa-dev/nisum-java-evaluation/actions/workflows/gradle.yml/badge.svg)
+
 ## Environment:
 - Java version: 11
 - Gradle version: 7.3.3
