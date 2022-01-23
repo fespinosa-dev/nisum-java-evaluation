@@ -25,7 +25,9 @@ cd nisum-java-evaluation
 ```bash
 ./gradlew test
 ```
+## Swagger UI
 
+Swagger UI: [http://localhost:8080/swagger-ui](http://localhost:8080/swagger-ui/index.html)
 
 ## Operations:
 
@@ -72,10 +74,6 @@ Example of a response
   "isactive": true
 }
 ```
-
-## Swagger UI
-
-Swagger UI: [http://localhost:8080/swagger-ui](http://localhost:8080/swagger-ui/index.html)
 
 ### Script to create Database
 
