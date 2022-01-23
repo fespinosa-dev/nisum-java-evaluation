@@ -6,11 +6,18 @@
 - Spring Boot version: 2.6.3
 
 ## How to run
-- First compile the project:
+- First download the project:
+
+```bash
+git clone https://github.com/fespinosa-dev/nisum-java-evaluation.git
+cd nisum-java-evaluation
+```
+- Compile the project:
+
 ```bash
 ./gradlew clean build
 ```
-- To run the app:
+- Then run the app:
 ```bash
 ./gradlew bootRun
 ```
