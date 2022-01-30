@@ -1,4 +1,4 @@
-create table PHONE
+create table if not exists PHONE
 (
     phone_id     binary not null,
     city_code    varchar(255),
@@ -7,7 +7,7 @@ create table PHONE
     user_id      binary,
     primary key (phone_id)
 );
-create table USER
+create table if not exists USER
 (
     user_id    binary  not null,
     active     boolean not null,
@@ -21,6 +21,6 @@ create table USER
     primary key (user_id)
 );
 alter table USER
-    add constraint UK_email unique (email);
+    add constraint if not exists UK_email unique (email);
 alter table PHONE
-    add constraint FK_user_phone foreign key (user_id) references user;
+    add constraint if not exists FK_user_phone foreign key (user_id) references user;

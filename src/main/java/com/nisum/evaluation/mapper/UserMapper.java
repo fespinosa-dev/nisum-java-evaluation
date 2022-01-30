@@ -2,7 +2,7 @@ package com.nisum.evaluation.mapper;
 
 
 import com.nisum.evaluation.dto.CreateUserRequest;
-import com.nisum.evaluation.dto.CreateUserResponse;
+import com.nisum.evaluation.dto.UserItem;
 import com.nisum.evaluation.dto.PhoneItem;
 import com.nisum.evaluation.model.Phone;
 import com.nisum.evaluation.model.User;
@@ -20,7 +20,7 @@ public interface UserMapper {
     @Mapping(target = "token", ignore = true)
     User toUser(CreateUserRequest createUserRequest);
 
-    CreateUserResponse toCreateUserResponse(User user);
+    UserItem toUserItem(User user);
 
     @Mapping(target = "phoneId", ignore = true)
     @Mapping(target = "userId", ignore = true)
