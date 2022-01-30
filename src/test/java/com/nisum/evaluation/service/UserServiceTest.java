@@ -1,6 +1,7 @@
 package com.nisum.evaluation.service;
 
 import com.nisum.evaluation.TestDataFactory;
+import com.nisum.evaluation.configuration.security.JwtRequestFilter;
 import com.nisum.evaluation.model.Phone;
 import com.nisum.evaluation.model.User;
 import com.nisum.evaluation.repository.UserRepository;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.UUID;
@@ -22,8 +24,10 @@ class UserServiceTest {
 
     @Mock
     private UserRepository userRepository;
-    @Mock
-    private JwtTokenGenerator jwtTokenGenerator;
+
+    @Spy
+    private JwtTokenService jwtTokenService;
+
 
     @InjectMocks
     private UserService userService;
@@ -35,6 +39,17 @@ class UserServiceTest {
         Mockito.when(userRepository.save(user)).thenReturn(user);
 
         var savedUser = userService.saveUser(user);
+
+        assertSavedUser(savedUser);
+
+    }
+
+    @Test
+    void updateUser() {
+        var user = TestDataFactory.newUserStub();
+        Mockito.when(userRepository.save(user)).thenReturn(user);
+
+        var savedUser = userService.updateUser(user);
 
         assertSavedUser(savedUser);
 

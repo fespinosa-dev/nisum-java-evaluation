@@ -1,12 +1,14 @@
 package com.nisum.evaluation;
 
 import com.nisum.evaluation.dto.CreateUserRequest;
-import com.nisum.evaluation.dto.CreateUserResponse;
 import com.nisum.evaluation.dto.PhoneItem;
 import com.nisum.evaluation.model.Phone;
 import com.nisum.evaluation.model.User;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -58,6 +60,12 @@ public class TestDataFactory {
                 .countryCode("52")
                 .build();
 
+    }
+
+    public static org.springframework.security.core.userdetails.User newUserDetailsUser() {
+        List<GrantedAuthority> authorityList = new ArrayList<>();
+        authorityList.add(new SimpleGrantedAuthority("USER_ROLE"));
+        return new org.springframework.security.core.userdetails.User("Juan Rodriguez","0123456789$abcdefgAB", authorityList);
     }
 
 

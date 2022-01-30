@@ -1,19 +1,16 @@
 package com.nisum.evaluation.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nisum.evaluation.TestDataFactory;
-import com.nisum.evaluation.dto.CreateUserResponse;
 import com.nisum.evaluation.dto.PhoneItem;
-import com.nisum.evaluation.mapper.UserMapper;
+import com.nisum.evaluation.dto.UserItem;
 import com.nisum.evaluation.model.User;
 import com.nisum.evaluation.service.UserService;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.web.servlet.MockMvc;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -23,29 +20,20 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @ActiveProfiles("test")
-@WebMvcTest({UserController.class, UserMapper.class})
-class UserControllerTest {
+@SpringBootTest
+@AutoConfigureMockMvc
+class UserControllerTest extends AbstractControllerTest{
 
     private static final int FIRST_PHONE = 0;
 
-    @Autowired
-    private MockMvc mockMvc;
-
-    @Autowired
-    private UserMapper userMapper;
-
     @MockBean
     private UserService userService;
-
-    @Autowired
-    protected ObjectMapper objectMapper;
 
 
     @Test
     void saveUser() throws Exception {
 
         var createUserRequest = TestDataFactory.newCreateUserRequestStub();
-        var user = userMapper.toUser(createUserRequest);
         var savedUser = TestDataFactory.newUserStub();
 
 
@@ -58,7 +46,7 @@ class UserControllerTest {
 
 
         var contentAsString  = resultActions.andReturn().getResponse().getContentAsString();
-        var createUserResponse = objectMapper.readValue(contentAsString, CreateUserResponse.class);
+        var createUserResponse = objectMapper.readValue(contentAsString, UserItem.class);
 
         assertCreateUserResponse(createUserResponse);
 
@@ -66,7 +54,7 @@ class UserControllerTest {
 
     }
 
-    private void assertCreateUserResponse(CreateUserResponse response) {
+    private void assertCreateUserResponse(UserItem response) {
         assertThat(response).isNotNull();
         assertThat(response.getUserId()).isNotNull();
         assertThat(response.getName()).isEqualTo("Juan Rodriguez");
@@ -85,5 +73,6 @@ class UserControllerTest {
         assertThat(phoneItem.getNumber()).isEqualTo("123456");
         assertThat(phoneItem.getCountryCode()).isEqualTo("52");
     }
+
 
 }
