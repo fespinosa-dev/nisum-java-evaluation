@@ -47,3 +47,12 @@ test {
     finalizedBy jacocoTestReport // report is always generated after tests run
     useJUnitPlatform()
 }
+
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'com.nisum.evaluation.NisumJavaEvaluationApplication'
+        )
+    }
+}
