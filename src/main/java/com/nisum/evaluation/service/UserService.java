@@ -5,32 +5,44 @@ import com.nisum.evaluation.model.User;
 import com.nisum.evaluation.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
+    private final JwtTokenService jwtTokenService;
 
-    private final JwtTokenGenerator jwtTokenGenerator;
-
-    /**
-     * Stores the user along with the generated token in the database
-     *
-     * @param user to be saved
-     * @return savedUser
-     */
     public User saveUser(User user) {
         User savedUser;
         try {
-            var jwtToken = jwtTokenGenerator.generateJwtToken(user.getName());
-            user.setToken(jwtToken);
+            var generatedToken = jwtTokenService.generateToken(user.getName());
+            user.setToken(generatedToken);
             savedUser = userRepository.save(user);
         } catch (DataIntegrityViolationException ex) {
             throw new EmailAlreadyExistsException(ex);
         }
         return savedUser;
+    }
+
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
+
+    public User findUserByName(String username) {
+        return userRepository.findUserByName(username);
+    }
+
+    public List<User> findAllUsers() {
+        List<User> allUsers = new ArrayList<>();
+        userRepository.findAll().forEach(allUsers::add);
+        return allUsers;
     }
 
 }
