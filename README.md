@@ -11,7 +11,7 @@
 - First download the project:
 
 ```bash
-git clone https://github.com/fespinosa-dev/nisum-java-evaluation.git
+git clone https://github.com/fespinosa-dev/spring-boot-jwt.git
 cd nisum-java-evaluation
 ```
 - Compile the project:
